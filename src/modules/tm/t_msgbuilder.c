@@ -428,6 +428,7 @@ char *build_local_reparse(tm_cell_t *Trans,unsigned int branch,
 				break;
 			case HDR_ROUTE_T:
 			case HDR_MAXFORWARDS_T:
+			case HDR_USERAGENT_T:
 				/* copy hf */
 				s = lw_next_line(s, invite_buf_end);
 				append_str(d, s1, s - s1);

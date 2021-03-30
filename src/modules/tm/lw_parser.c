@@ -166,6 +166,16 @@ char *lw_get_hf_name(char *begin, char *end, enum _hdr_types_t *type)
 			}
 			break;
 
+        case _user_: /* User-Agent */
+			if(end - begin < 11) {
+				return begin;
+			}
+
+			if (LOWER_DWORD(READ(p+4)) == __age_){
+				LW_HNAME_SET(p, end, 10, type, HDR_USERAGENT_T);
+			}
+            break;
+			
 		default:
 			/* compact headers */
 			switch(LOWER_BYTE(*p)) {
